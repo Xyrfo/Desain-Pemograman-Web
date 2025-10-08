@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Image Slider</title>
+    <link rel="stylesheet" type="text/css" href="styleCSS.css">
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            // sembunyikan semua gambar dan judul
+            $('.slidertitle, #slider img').hide();
+
+            // mulai dari gambar pertama
+            let i = 0;
+            const total = 3;
+
+            // tampilkan gambar pertama
+            showNextImage();
+
+            // jalankan otomatis setiap 3 detik
+            setInterval(showNextImage, 3000);
+
+            function showNextImage() {
+                i++;
+                if (i > total) i = 1;
+
+                // tampilkan gambar dan title sesuai urutan
+                $('#sliderImage' + i)
+                    .appendTo('#slider')
+                    .fadeIn(1000)
+                    .delay(1000)
+                    .fadeOut(1000);
+
+                $('#title' + i)
+                    .appendTo('#slider')
+                    .fadeIn(1000)
+                    .delay(1000)
+                    .fadeOut(1000);
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="slider">
+        <img id="sliderImage1" src="img/gambar1.png">
+        <div class="slidertitle" id="title1">Gambar 1</div>
+
+        <img id="sliderImage2" src="img/gambar2.png">
+        <div class="slidertitle" id="title2">Gambar 2</div>
+
+        <img id="sliderImage3" src="img/gambar3.png">
+        <div class="slidertitle" id="title3">Gambar 3</div>
+    </div>
+</body>
+</html>
